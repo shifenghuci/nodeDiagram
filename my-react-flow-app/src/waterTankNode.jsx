@@ -2,8 +2,6 @@ import {Handle, Position} from '@xyflow/react'
 
 
 function WaterTankNode() {
-
-    const needRefill = false;
     const isConnectable = true;
     return (
         <div className="water-tank-node">

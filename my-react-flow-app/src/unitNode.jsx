@@ -5,6 +5,7 @@ import axios from "axios"
 
 import {useState} from 'react'
 
+//visit access point
 async function getWaterModuleData(id) {
     const url = `http://192.168.4.1/water-module-${id}`;
     
@@ -17,6 +18,7 @@ async function getWaterModuleData(id) {
     }
 }
 
+//visit access point for outflux event
 async function getOutfluxModuleData(id) {
     const url = `http://192.168.4.1/outflux-module-${id}`;
     
@@ -30,14 +32,10 @@ async function getOutfluxModuleData(id) {
 }
 
 
-
-
-
 function UnitNode({data}) {
     const isConnectable = true;
 
     function updateInflux_active(){
-        console.log(`Influx ${data.name}`);
         data.toggleInfluxAnimation(`3_${data.name}`);
         //axios call here
         getWaterModuleData(data.name)
@@ -51,7 +49,6 @@ function UnitNode({data}) {
     }
 
     function updateOutflux_active(){
-        console.log(`Outflux ${data.name}`);
         data.toggleOutfluxAnimation(`3_${data.name}`);
         //axios call here
         getOutfluxModuleData(data.name)
