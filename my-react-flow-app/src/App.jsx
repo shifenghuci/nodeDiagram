@@ -11,32 +11,6 @@ import {waterBlue} from './edges'
 import WaterTankNode from './waterTankNode.jsx'
 import UnitNode from './unitNode.jsx';
 
-export function animateWaterflow(edge) {
-    edge.animated = true;
-    edge.style = {};
-    edge.style["stroke"] = waterBlue;
-    console.log(edge)
-    return edge
-  }
-  
-export function getEdge(id){
-    return edges.find(edge => edge.id === id) || null;
-  }
-
-export function animateInflux(node_id) {
-    // //activate animation for tank to Artery pipe edge
-    animateWaterflow(getEdge(`e1-2_A`));
-    // //activate animation for Artery pipe to currentNode
-    animateWaterflow(getEdge(`e2_A-${node_id}`));
-  }
-
-export function animateOutflux(node_id){
-    // //activate animation for currentNode to Vein pipe
-    animateWaterflow(getEdge(`e${node_id}-2_V`));
-    // //activate animation for Vein pipe to tank
-    animateWaterflow(getEdge(`e2_V-1`));
-  }
-
 const default_edges = [
   {id:'e1-2_A', source: '1', target: '2_A'},
   {id:'e2_V-1', source: '2_V', target: '1'},
@@ -160,11 +134,13 @@ const NodeDiagram = () => {
             edge.animated = true;
             edge.style = {};
             edge.style["stroke"] = waterBlue;
+            edge.style["stroke-width"] = 2;
           }
           return edge
         })
       )
     }
+
     function toggleOutfluxAnimation(n_id) {
       console.log("toggling outflux")
       setEdges((currentEdges) =>
@@ -175,17 +151,13 @@ const NodeDiagram = () => {
             edge.animated = true;
             edge.style = {};
             edge.style["stroke"] = waterBlue;
+            edge.style["stroke-width"] = 2;
           }
           return edge
         })
       )
     }
-    nodes.forEach(n => {
-      if (n.type === 'unitNode') {
-        n.data["toggleInfluxAnimation"] = (n) => toggleInfluxAnimation(n);
-        n.data["toggleOutfluxAnimation"] = (n) => toggleOutfluxAnimation(n);
-      }
-    })
+
     return (
         <div style = {{width: '100vw', height: '100vh'}}>
             <ReactFlow
