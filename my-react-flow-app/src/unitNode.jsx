@@ -35,9 +35,10 @@ async function getOutfluxModuleData(id) {
 
 function UnitNode({data}) {
     const isConnectable = true;
+
     function updateInflux_active(){
         console.log(`Influx ${data.name}`);
-        data.animateInflux();
+        data.toggleInfluxAnimation(`3_${data.name}`);
         //axios call here
         getWaterModuleData(data.name)
             .then(data => {
@@ -51,8 +52,7 @@ function UnitNode({data}) {
 
     function updateOutflux_active(){
         console.log(`Outflux ${data.name}`);
-        data.animateOutflux();
-        //axios call here
+        data.toggleOutfluxAnimation(`3_${data.name}`);
         //axios call here
         getOutfluxModuleData(data.name)
             .then(data => {

@@ -4,7 +4,5 @@ import NodeDiagram from './App.jsx'
 import './index.css'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <NodeDiagram />
-  </StrictMode>,
+  <NodeDiagram />
 )
