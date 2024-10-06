@@ -1,3 +1,4 @@
+import { animateInflux, animateOutflux } from "./App"
 const waterTankNode = {
     id: '1',
     type: 'waterTank',
@@ -25,27 +26,27 @@ const unit1Pipe = {
     id: '3_1',
     position: {x:200, y:150},
     type: 'unitNode',
-    data: {name: 'Unit 1'}
+    data: {name: '1', animateInflux:() => animateInflux('3_1'), animateOutflux:() => animateOutflux('3_1')}
 }
 const unit2Pipe = {
     id: '3_2',
     position: {x:200, y:225},
     type: 'unitNode',
-    data: {name : 'Unit 2'}
+    data: {name : '2', animateInflux:() => animateInflux('3_2'), animateOutflux:() => animateOutflux('3_2')}
 }
 
 const unit3Pipe = {
     id: '3_3',
     position: {x:200, y:295},
     type: 'unitNode',
-    data: {name : 'Unit 3'}
+    data: {name : '3', animateInflux:() => animateInflux('3_3'), animateOutflux:() => animateOutflux('3_3')}
 }
 
 const unit4Pipe = {
     id: '3_4',
     position: {x:200, y:365},
     type: 'unitNode',
-    data: {name : 'Unit 4'}
+    data: {name : '4', animateInflux:() => animateInflux('3_4'), animateOutflux:() => animateOutflux('3_4')}
 }
 
 
